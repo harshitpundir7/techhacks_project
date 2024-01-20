@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import Application from "../components/Application";
+import Apply from "../components/Apply";
 
 function BountyPage() {
   const { id } = useParams();
@@ -10,7 +11,7 @@ function BountyPage() {
   const accessToken = Cookies.get("accessToken");
   const [bounty, setBounty] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [dialog, setDaialog] = useState(false);
   useEffect(() => {
     fetch(`http://localhost:8888/bounty/get`, {
       method: "GET",
@@ -29,6 +30,8 @@ function BountyPage() {
 
   return (
     <>
+      {dialog ? <Apply id={id} dialog={dialog} /> : " "}
+
       <div className="border border-gray-300 p-4 rounded-md md:w-full mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl border-b-0 h-auto flex flex-col justify-center bg-purple-100">
         <span
           onClick={() => navigate("/home")}
@@ -53,7 +56,10 @@ function BountyPage() {
             <span className="block  text-2xl p-5">{bounty.createdBy}</span>
           </div>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <button className="bg-blue-500 text-white px-6 py-3 rounded-md text-2xl transition hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">
+            <button
+              onClick={() => setDaialog(!dialog)}
+              className="bg-blue-500 text-white px-6 py-3 rounded-md text-2xl transition hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+            >
               Apply
             </button>
             <a href={bounty.issueLink}>

@@ -35,9 +35,22 @@ const handlegetUserBounties = async (req, res) => {
   res.json({ success: true, data });
 };
 
+const handleApplyToBounty = async (req, res) => {
+  const { id } = req.headers;
+  const description = req.body.applicant.description;
+  const newApplication = { user: req.user.email, description };
+  //
+  const result = await bounty.updateOne(
+    { id },
+    { $push: { Applications: newApplication } },
+  );
+  res.json({ status: true, result });
+};
+
 module.exports = {
   handleCreateNewBounty,
   handleAllBounties,
   handlegetBounty,
   handlegetUserBounties,
+  handleApplyToBounty,
 };
