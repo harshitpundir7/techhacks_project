@@ -1,8 +1,16 @@
 import React from "react";
-
-const BountyComponent = ({ title, description, status, createdBy, price }) => {
+import { useNavigate } from "react-router-dom";
+const BountyComponent = ({
+  title,
+  description,
+  status,
+  createdBy,
+  price,
+  id,
+}) => {
+  const navigate = useNavigate();
   return (
-    <div className="">
+    <div className="" onClick={() => navigate(`/bountypage/${id}`)}>
       <div
         className={
           "bg-purple-50 p-4 rounded-md shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out animate-fadeIn animate-delay-${index} outline-none focus:outline-white rounded-3xl mx-16 my-5"

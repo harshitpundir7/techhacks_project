@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 function App() {
-  const [cookies] = useCookies(["token"]);
+  const [cookies] = useCookies(["accessToken"]);
   const isTokenPresent = cookies.token !== undefined;
   const navigate = useNavigate();
   useEffect(() => {

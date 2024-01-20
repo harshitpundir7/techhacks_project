@@ -22,24 +22,22 @@ async function handleCreateNewBounty(req, res) {
 
 async function handleAllBounties(req, res) {
   const data = await bounty.find({});
-  console.log(data);
   res.json({ data });
 }
 
-// async function handleLoginUser(req, res) {
-//   const { email, password } = req.body;
-//   // console.log("HEllo " + email);
-//   const user = await User.findOne({ email });
-//   if (!user) return res.status(400).send({ error: "User doesn't exists!" });
-//   const passwordMatch = await bcrypt.compare(password, user.password);
-//   console.log(passwordMatch);
-//   if (passwordMatch) {
-//     const accessToken = jwt.sign({ name: user.name, email }, secretKey);
-//     console.log(accessToken);
-//     res.json({ accessToken, auth: true });
-//   } else {
-//     return res.status(400).send({ error: "Invalid Password" });
-//   }
-// }
+const handlegetBounty = async (req, res) => {
+  const id = req.headers.id;
+  const data = await bounty.findOne({ id });
+  res.json({ success: true, data });
+};
+const handlegetUserBounties = async (req, res) => {
+  const data = await bounty.find({ createdBy: req.user.email });
+  res.json({ success: true, data });
+};
 
-module.exports = { handleCreateNewBounty, handleAllBounties };
+module.exports = {
+  handleCreateNewBounty,
+  handleAllBounties,
+  handlegetBounty,
+  handlegetUserBounties,
+};

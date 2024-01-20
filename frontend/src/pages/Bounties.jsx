@@ -46,6 +46,7 @@ const Home = () => {
           <>
             {bounties.map((bounty) => (
               <BountyComponent
+                id={bounty.id}
                 key={bounty._id} // Assuming you have an _id field for each bounty
                 title={bounty.title}
                 price={bounty.price}

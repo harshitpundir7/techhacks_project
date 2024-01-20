@@ -3,6 +3,7 @@ import App from "./App.jsx";
 import Auth from "./pages/Auth.jsx";
 import Bounties from "./pages/Bounties.jsx";
 import CreateBounty from "./pages/CreateBounty.jsx";
+import BountyPage from "./pages/BountyPage.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const Routing = () => {
@@ -15,6 +16,7 @@ const Routing = () => {
           <Route path="/home" element={<Bounties />} />
           <Route path="/bountyCreate" element={<CreateBounty />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/bountypage/:id" element={<BountyPage />} />
         </Routes>
       </BrowserRouter>
     </div>
