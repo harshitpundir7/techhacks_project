@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 function Navbar() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
   return (
     <>
-      <nav className="p-3 bg-white shadow md:flex md:items-center md:justify-between">
+      <nav className="p-3 bg-white-50 shadow md:flex md:items-center md:justify-between">
         <div className="flex justify-between items-center">
-          <span className="text-lg font-[Poppins] cursor-pointer">
+          <span className="text-3xl font-[Poppins] cursor-pointer">
             <img
-              className="h-8 inline"
+              className="h-8 text-7xl mx-16 inline"
               src="https://tailwindcss.com/_next/static/media/social-square.b622e290e82093c36cca57092ffe494f.jpg"
               alt=""
             />
-            techacks
+            Techacks
           </span>
-          <span className="text-2xl cursor-pointer mx-2 md:hidden block">
+          <span className="text-4xl cursor-pointer mx-4 md:hidden block">
             <ion-icon name="menu" onClick={toggleMenu} />
           </span>
         </div>
@@ -31,7 +34,7 @@ function Navbar() {
           <li className="mx-2 my-4 md:my-0">
             <span
               onClick={() => navigate("/Dashboard")}
-              className="text-sm hover:text-cyan-500 cursor-pointer duration-500"
+              className="text-xl cursor-pointer duration-100 transition-colors hover:text-purple-500 hover:bg-gray-200 py-1 px-2 rounded-md"
             >
               Dashboard
             </span>
@@ -39,14 +42,15 @@ function Navbar() {
           <li className="mx-2 my-4 md:my-0">
             <span
               onClick={() => navigate("/home")}
-              className="text-sm cursor-pointer hover:text-cyan-500 duration-500"
+              className="text-xl cursor-pointer duration-100 transition-colors hover:text-purple-500 hover:bg-gray-200 py-1 px-2 rounded-md"
             >
-              Bounties
+              Home
             </span>
+
           </li>
           <button
             onClick={() => navigate("/bountyCreate")}
-            className="bg-cyan-400 text-white font-[Poppins] duration-500 px-4 py-1 mx-2 hover:bg-cyan-500 rounded"
+            className="bg-purple-900 text-white font-[Poppins] duration-100 px-4 h-9 py-1 mx-2 hover:bg-purple-400 rounded"
           >
             Add Bounty!
           </button>
